@@ -1,0 +1,402 @@
+
+/* login css */
+b, strong{ font-weight: normal;}
+textarea::-webkit-input-placeholder {color: #9f9f9f; font-weight: 400;}
+textarea:-moz-placeholder { /* Firefox 18- */ color: #9f9f9f; font-weight: 400;}
+textarea::-moz-placeholder {  /* Firefox 19+ */  color: #9f9f9f; font-weight: 400;}
+textarea:-ms-input-placeholder { color: #9f9f9f; font-weight: 400;}
+textarea::placeholder { color: #9f9f9f; font-weight: 400;}
+
+.login-wrapper{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #f5f8fd;
+}
+.login-cnt{
+    margin: 0px;
+    padding: 0px;
+    display: table; 
+    width: 100%;
+    height: 100%;
+}
+.login-cnt .content{
+    margin: 10% auto 0px auto;
+    padding: 0px;
+    display: block; 
+    width: 970px;   
+    height: 569px;
+}
+
+.login-cnt .content .left{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 485px;
+    height: 569px;
+    background-image: url(../../images/login-left.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    text-align: center;
+}
+.login-cnt .content .left .logo-login{
+    margin: 112px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+.login-cnt .content .left .hd-title{
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+}
+.login-cnt .content .left .hd-title.hd-title-top{margin-top: 0px;}
+.login-cnt .content .left .hd-title.hd-title-bottom{ margin-bottom: 0px;}
+
+.login-cnt .content .left .hd-title span{ font-weight: 700; }
+.login-p{
+    margin: 0px auto;
+    padding: 0px;
+    display: block;
+    width: 78%;
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    color: #fff;
+}
+.button-group{
+    margin: 0px;
+    padding: 0px;
+    display: block;  
+    width: 100%;
+}
+.btn-knowmore{
+    margin: 30px auto;
+    padding: 0px;
+    display: block;  
+    width: 148px;   
+    height: 50px;
+    line-height: 46px;
+    border: 1px solid #c9a9f1;
+    border-radius: 3px;
+    color: #fff;
+    background: transparent;
+    text-align: center;
+}
+.btn-knowmore:hover{ background: #fff; color: #4603e0;  border: 1px solid #fff;}
+.login-cnt .content .right{
+    margin: 0px;
+    padding: 10px 10px;
+    display: block;
+    float: left;
+    width: 485px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 19px 10px 44px #c4cbd5;
+    text-align: center;
+}
+.login-error{
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    display: block; 
+    width: 100%;
+    height: 70px;
+    border: 1px solid #f3272c;
+    border-radius: 4px;
+    position: relative;
+    visibility: hidden;
+}
+.login-error .close-circle{
+    margin: 0px 20px 0px 0px;
+    padding: 21px 0px 0px 0px;
+    display: block;
+    float: left;
+    width: 70px;
+    height: 100%;
+    background: #f3272c;
+    text-align: center;
+}
+.login-error .cnt{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+}
+.login-error .cnt .one{
+     margin: 15px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    color: #2b2b2b;   
+    font-size: 14px;
+    text-align: left;
+}
+.login-error .cnt .two{
+     margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    color: #2b2b2b;   
+    font-size: 12px;
+    text-align: left;
+}
+.login-error .closeAnch{
+    position: absolute;
+    top: 13px;
+    right: 20px;
+}
+.title-signin{
+    margin: 20px 0px 10px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 36px;
+    font-weight: normal;
+    color: #2b2b2b;   
+}
+.signin-before{
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    font-weight: normal;
+    color: #2b2b2b;   
+}
+.sign-form{
+    margin: 30px auto;
+    padding: 0px 50px;
+    display: block;
+    width: 100%;
+}
+.signin-row{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+.signin-row .emailid{
+    margin: 0px 0px 20px 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #f5f8fd;
+    background-image: url(../../images/icon-back.jpg);
+    background-repeat: no-repeat;
+    color: #9f9f9f;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    box-shadow: 0px 0px 0px transparent;
+}
+.signin-row .emailid:focus{
+    background-color: #ffffff;
+    color: #2b2b2b; 
+    box-shadow: 0px 0px 16px #caacfa;
+}
+.signin-row .pos-icon{
+    position: absolute;
+    top: 16px;
+    left: 14px;
+}
+.signin-row .pos-icon.password{ top: 13px; }
+.anch-forgot{
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    color: #2b2b2b;  
+    text-decoration: underline;
+}
+.anch-forgot:hover{color: #2b2b2b;}
+.btn-signIn{
+    margin: 30px auto 30px auto;
+    padding: 0px;
+    width: 108px;
+    height: 50px;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;  
+    text-decoration: none;
+    border: 0px;
+    border-radius: 4px;
+    background: #8e2de2;
+    /* background-image: url(../images/btn-bg.jpg);
+    background-repeat: repeat-y;
+    background-position: 28% 100%;*/
+}
+.btn-signIn:hover{/*background-image: url(../images/btn-bg-hover.jpg); background-position: 100% 28%;*/background: #4100e0;}
+.btn-signIn.btn-logIn{ width: 94px; }
+.text-dont{
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-weight: normal;
+    color: #2b2b2b;    
+}
+.text-dont a{ color: #4200e0; }
+.text-dont.text-temporary{ font-size: 12px; }
+
+/* login reset password */
+.login-cnt .content.login-reset-content{
+    height: 657px;
+    margin-top: 5%;}
+.login-cnt .content.login-reset-content .left{
+    height: 657px;
+    background-image: url(../../images/login-right-reset.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.login-cnt .content.login-reset-content .logo-login{ margin-top: 95px; }
+.text-instructions{
+    margin: 30px 0px 30px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 22px;
+    color: #fff;
+}
+.text-note{
+    margin: 60px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 14px;
+    color: #fff; 
+    text-align: center; 
+}
+.ullogin-points{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    list-style: none;
+    color: #fff;
+    text-align: left;
+}
+.ullogin-points li{
+    margin: 0px 0px 16px 60px;
+    padding: 0px 0px 0px 10px;
+    display: block;
+    float: none;
+    font-size: 14px;
+    background-image: url(../../images/li-arrow.png);
+    background-repeat: no-repeat;
+    background-position: left top 6px;
+}
+.text-security{
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 16px;
+    color: #2b2b2b; 
+    text-align: left;
+    font-weight: 500;
+}
+.select-security{
+    margin: 0px 0px 20px 0px;
+    padding: 0px 20px;
+    display: block;
+    font-size: 14px;
+    color: #9f9f9f; 
+    text-align: left;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 4px;
+    background:#f5f8fd url(../../images/select-arrow.png) no-repeat 94% 50%;
+    /*background-color: #f5f8fd;
+    background-image: url(../images/select-arrow.png);
+    background-repeat: no-repeat;
+    background-position: right 22px center;*/
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    -ms-appearance: none;
+    appearance:         none;
+}
+select::-ms-expand {display: none;}
+.textarea-answer{
+    margin: 0px 0px 20px 0px;
+    padding: 20px 20px;
+    display: block;
+    font-size: 14px;
+    color: #9f9f9f; 
+    text-align: left;
+    width: 100%;
+    height: 100px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #f5f8fd;   
+}
+.title-signin.title-reset{ margin-top: 30px; }
+
+/* login reset password */
+.downarrow-mobile{ 
+    margin: 20px;
+    padding: 0px;
+    display: none;
+    text-decoration: none;
+    color: #fff;
+}
+.downarrow-mobile:hover{ color: #fff; }
+/* login css */
+
+/* responsive css */
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 992px) {}
+@media screen and (max-width: 959px) {
+.login-cnt .content{ margin: 0px; width: 100%; height: 100%; }
+.login-cnt .content .left{ margin: 0px auto; float: none; }
+.login-cnt .content .left .logo-login{ margin-top: 30px; padding-top: 30px; }
+.login-cnt .content .left{ height: auto; }
+.login-p, .button-group{ display: none; }
+.login-cnt .content.login-reset-content .left{ height: auto;}
+.ullogin-points{ display: none; }
+.text-note{ display: none; }
+.downarrow-mobile{ display: block; padding-bottom: 30px; margin-bottom: 0px;}
+.login-cnt .content .right{ height: auto; margin: 0px auto; float: none; }
+.sign-form{padding: 0px 10px;}
+
+
+}
+
+@media screen and (max-width: 800px) {}
+
+@media screen and (max-width: 768px) {}
+@media screen and (max-width: 767px) {}
+@media screen and (max-width: 753px) {}
+@media screen and (max-width: 711px) {}
+
+
+@media screen and (max-width: 667px) {}
+@media screen and (max-width: 600px) {}
+
+
+@media screen and (max-width: 569px) {}
+@media screen and (max-width: 533px) {}
+
+@media screen and (max-width: 480px) {
+.login-cnt .content .left{ width: 96%; }    
+.login-cnt .content .right{ width: 96%; }    
+.login-cnt .content .left .hd-title{ font-size: 24px; }
+.title-signin{ font-size: 24px; }
+}
+@media screen and (max-width: 424px) {}
+@media screen and (max-width: 414px) {}
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 390px) {}
+@media screen and (max-width: 375px) {}
+@media screen and (max-width: 360px) {}
+@media screen and (max-width: 320px) {}
+
+/* responsive css */

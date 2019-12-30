@@ -1,0 +1,99 @@
+# Node.js with React
+# Build a Node.js project that uses React.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  branches:
+    include:
+    - master
+    - eval
+    exclude:
+    - development
+pr: none
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  AWS_REPO_NAME: reazo
+  GCLOUD_PROJECT_NAME: gcr.io/jacl-clienthub
+  EVAL_DOCKER_IMAGE_NAME: reazo-agent-eval
+  DOCKER_IMAGE_NAME: reazo-agent
+  KUBE_CLUSTER: microservice1-cluster
+  EVAL_KUBE_DEPLOYMENT_NAME: reazo-agent-eval
+  KUBE_DEPLOYMENT_NAME: reazo-agent
+  KUBE_DEPLOYMENT_CONTAINER_NAME: reazo-agent-sha256
+  EVAL_KUBE_DEPLOYMENT_CONTAINER_NAME: reazo-agent-eval-sha256
+steps:
+- task: DownloadSecureFile@1
+  name: 'intermediateCertificate'
+  displayName: 'Download Godaddy Intermediate Certificate'
+  inputs:
+    secureFile: 'go-daddy-intermediate-certificate.crt'
+- task: DownloadSecureFile@1
+  name: 'certificate'
+  displayName: 'Download Reazo SAN Certificate'
+  inputs:
+    secureFile: 'reazo-san-certificate.crt'
+- task: DownloadSecureFile@1
+  name: 'privateKey'
+  displayName: 'Download Reazo SAN Certificate Private Key'
+  inputs:
+    secureFile: 'reazo-san-certificate-private.key'
+- task: Bash@3
+  displayName: 'Concatenate Certificates'
+  inputs:
+    targetType: 'inline'
+    script: cat $(certificate.secureFilePath) $(intermediateCertificate.secureFilePath) > reazo-combined-certificate.crt
+- task: Bash@3
+  displayName: 'Write Private Key To File'
+  inputs:
+    targetType: 'inline'
+    script: cat $(privateKey.secureFilePath) > reazo-san-certificate-private.key
+- task: Bash@3
+  displayName: Run Production Deployment Script
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    filePath: 'deploy-production.sh'
+- task: Docker@2
+  displayName: Push Production Docker Image To GCloud Repository
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    containerRegistry: 'gcloud-container-registry'
+    repository: 'jacl-clienthub/reazo-agent'
+    command: 'push'
+- task: Kubernetes@1
+  displayName: Deploy Docker Image To Production Kubernetes Deployment
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'jacl-clienthub/microservice1-cluster'
+    kubernetesCluster: $(KUBE_CLUSTER)
+    namespace: 'default'
+    command: set
+    arguments: 'image deployment/$(KUBE_DEPLOYMENT_NAME) $(KUBE_DEPLOYMENT_CONTAINER_NAME)=$(GCLOUD_PROJECT_NAME)/$(DOCKER_IMAGE_NAME):$(Build.BuildId)'
+- task: Bash@3
+  displayName: Run Eval Deployment Script
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/eval'))
+  inputs:
+    filePath: 'deploy-eval.sh'
+- task: Docker@2
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/eval'))
+  displayName: Push Eval Docker Image To GCloud Repository
+  inputs:
+    containerRegistry: 'gcloud-container-registry'
+    repository: 'jacl-clienthub/reazo-agent-eval'
+    command: 'push'
+- task: Kubernetes@1
+  displayName: Deploy Docker Image To Eval Kubernetes Deployment
+  condition: and(always(), eq(variables['Build.SourceBranch'], 'refs/heads/eval'))
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'jacl-clienthub/microservice1-cluster'
+    kubernetesCluster: $(KUBE_CLUSTER)
+    namespace: 'default'
+    command: set
+    arguments: 'image deployment/$(EVAL_KUBE_DEPLOYMENT_NAME) $(EVAL_KUBE_DEPLOYMENT_CONTAINER_NAME)=$(GCLOUD_PROJECT_NAME)/$(EVAL_DOCKER_IMAGE_NAME):$(Build.BuildId)'
+
+
+
