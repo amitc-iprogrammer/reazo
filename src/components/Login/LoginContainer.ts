@@ -6,11 +6,40 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { onAuthenticationFormChange, onForgotPassword, onForgotPasswordToggle, onLogin } from '../../actions/AuthenticationActions';
 import { Validate, ValidateForm } from '../../lib/Validation';
+import * as Validation from 'src/lib/Validation';
+import { Validation1 } from '../../utilities/validate';
 import LoginLayout from './LoginLayout';
 import { LoginView } from './LoginView';
+import 'bootstrap/dist/css/bootstrap.css';
+import { TemporaryPasswordView, ForgotPasswordView, ForgotPasswordSecurityQuestionView } from './LoginView';
+// import { Visibility } from 'semantic-ui-react';
+// import { TemporaryPasswordViewProps } from './types/LoginView';
+
 
 
 export class LoginContainer extends React.Component<LoginContainerProps> {
+	temporaryPasswordData = {
+		"statusCode": 200,
+		"data": {
+			"email": "adamcovert@gmail.com",
+			"passWord": "adam123",
+			"userId": 123,
+			"firstName": "Mark",
+			"lastName": "Zuckerberg"
+
+		},
+		"message": "Password Matched",
+		"emailErrorMessage": "Wrong Email Address, Please type correct"
+	};
+	public state = {
+		temporaryLoginData: this.temporaryPasswordData,
+		emailTemporaryData: "",
+		passWordTemporaryData: "",
+		errorMessage: false,
+		emailValidationErrorMessage: '',
+		emptyFieldError: '',
+		classAdd: false
+	};
 
 	/**
 	 * @member {object} loginFormValidators
@@ -46,27 +75,51 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 			this.props.push('/dashboard');
 		}
 		else if (this.props.authentication.form.forgotPasswordSuccess === true) {
-			// viewComponent = React.createElement();
+			viewComponent = React.createElement(ForgotPasswordSecurityQuestionView,
+				{
+					...this.props,
+					onForgotPasswordToggle: this.props.onForgotPasswordToggle,
+					onFormChange: this.handleFormChange,
+					// onFormSubmit: this.handleFormSubmit
+				} as any
+			);
 		}
-		// else if (this.props.authentication.form.forgotPassword === true) {
-		// 	// viewComponent = React.createElement(ForgotPasswordView,
-		// 		{
-		// 			...this.props,
-		// 			onForgotPasswordToggle: this.props.onForgotPasswordToggle,
-		// 			onFormChange: this.handleFormChange,
-		// 			onFormSubmit: this.handleFormSubmit
-		// 		} as any
-		// 	);
-		// }
-		else {
+		else if (this.props.authentication.form.forgotPassword === true) {
+			console.log("forgotPasswordView");
+			viewComponent = React.createElement(ForgotPasswordView,
+				{
+					...this.props,
+					onForgotPasswordToggle: this.props.onForgotPasswordToggle,
+					onFormChange: this.handleFormChange,
+					onFormSubmit: this.handleFormSubmit
+				} as any
+			);
+		}
+		else if (window.location.href === "http://localhost:3000/login") {
 			viewComponent = React.createElement(LoginView,
 				{
 					...this.props,
 					onForgotPasswordToggle: this.props.onForgotPasswordToggle,
 					onFormChange: this.handleFormChange,
-					onFormSubmit: this.handleFormSubmit,
+					onFormSubmit: this.handleTemporaryPasswordFormSubmit,
+					onStateChange: this.state,
+					handleCloseError: this.handleCloseError
 				} as any
 			);
+
+			return React.createElement(LoginLayout, null, viewComponent);
+		}
+		else {
+			viewComponent = React.createElement(TemporaryPasswordView,
+				{
+					...this.props,
+					onFormChange: this.handleTemporaryPasswordFormChange,
+					onFormSubmit: this.handleTemporaryPasswordFormSubmit,
+					handleCloseError: this.handleCloseError,
+					onStateChange: this.state
+				} as any
+			);
+
 		}
 
 		return React.createElement(LoginLayout, null, viewComponent);
@@ -97,16 +150,48 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 			this.formValidators() as any,
 			this.props.onAuthenticationFormChange
 		);
-
 		if (formIsValid) {
 			if (this.props.authentication.form.forgotPassword === true) {
 				this.props.onForgotPassword(this.props.authentication.form.username.value);
+
 			}
 			else {
 				this.props.onLogin(this.props.authentication.form.username.value, this.props.authentication.form.password.value);
+
 			}
 		}
 	}
+	/**
+	 * @function handleTemporaryErrorChange
+	 * The function handles the Error message for temporary password view.
+	 */
+
+	private handleCloseError = (e: any) => {
+		if (this.state.errorMessage) {
+			this.setState({ errorMessage: false })
+		}
+	}
+	/**
+	 * @function handleTemporaryPasswordFormSubmit
+	 * The function handles the form submit request from the view
+	 * components. It will validate the current form, if the form is 
+	 * valid it will call an authentication action.
+	 */
+	private handleTemporaryPasswordFormSubmit = (e: any) => {
+		// this.props.push('/dashboard');
+		// const formIsValid = ValidateForm(this.props.authentication.form,
+		// 	this.formValidators() as any,
+		// 	this.props.onAuthenticationFormChange
+		// );
+		if (this.state.emailTemporaryData === this.temporaryPasswordData.data.email && this.state.passWordTemporaryData === this.temporaryPasswordData.data.passWord) {
+			this.props.push('/reset-password/dfpFiSl9MW8forg-ZXh5');
+		} else {
+			setTimeout(() => {
+			}, 3000)
+			this.setState({ errorMessage: true })
+		}
+	}
+	
 
 	/**
 	 * @function handleFormChange
@@ -117,12 +202,24 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 	 * @param {object} e - The event that caused the change.
 	 * @param {object} data - The data from the change.
 	 */
-	private handleFormChange = (e :any, data :any) => {
+	private handleFormChange = (e: any, data: any) => {
 		const targetField = e.target.name;
 		const fieldValue = e.target.value;
-
-		let fieldIsValid = true;
-
+		const emailValidation = Validation1.isValidEmail(fieldValue)
+		console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
+		if (fieldValue) {
+			this.setState({ classAdd: true })
+		} else if (!fieldValue) {
+			this.setState({ classAdd: false })
+		}
+		if (targetField === "username" && !emailValidation) {
+			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
+		}
+		else if (emailValidation) {
+			this.setState({ emailValidationErrorMessage: '' })
+		}
+		let fieldIsValid = false;
+		console.log('ValidationValidationValidationValidation', emailValidation)
 		const validators = this.formValidators();
 
 		if (validators.hasOwnProperty(targetField)) {
@@ -130,6 +227,43 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 				validators[e.target.name].required,
 				validators[e.target.name].validators);
 		}
+
+		this.props.onAuthenticationFormChange(targetField, fieldValue, fieldIsValid);
+	}
+
+
+	/**
+	 * @function handleTemporaryPasswordFormChange
+	 * The function handles the change events from the login and forgot 
+	 * password form. It will validate the changed field and call a prop
+	 * action to set the state of the change field.
+	 * 
+	 * @param {object} e - The event that caused the change.
+	 * @param {object} data - The data from the change.
+	 */
+	private handleTemporaryPasswordFormChange = (e: any, data: any) => {
+		const targetField = e.target.name;
+		const fieldValue = e.target.value;
+		{ targetField == "email" ? this.setState({ emailTemporaryData: fieldValue }) : targetField == "password" ? this.setState({ passWordTemporaryData: fieldValue }) : '' }
+		let fieldIsValid = true;
+		const emailValidation = Validation1.isValidEmail(fieldValue)
+		console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
+
+		if (targetField === "username" && !emailValidation) {
+			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
+		}
+		else if (emailValidation) {
+			this.setState({ emailValidationErrorMessage: '' })
+		}
+		const validators = this.formValidators();
+
+		if (validators.hasOwnProperty(targetField)) {
+			fieldIsValid = Validate(fieldValue,
+				validators[e.target.name].required,
+				validators[e.target.name].validators);
+		}
+
+		console.log("inside handleTemporaryPasswordFormChange", targetField);
 
 		this.props.onAuthenticationFormChange(targetField, fieldValue, fieldIsValid);
 	}
@@ -210,10 +344,10 @@ LoginContainer['defaultProps'] = {
 		logoutError: false,
 		session: null
 	},
-	onAuthenticationFormChange: () => ( undefined ),
-	onForgotPassword: () => ( undefined ),
-	onForgotPasswordToggle: () => ( undefined ),
-	onLogin: () => ( undefined )
+	onAuthenticationFormChange: () => (undefined),
+	onForgotPassword: () => (undefined),
+	onForgotPasswordToggle: () => (undefined),
+	onLogin: () => (undefined)
 }
 
 /**
@@ -226,7 +360,7 @@ LoginContainer['defaultProps'] = {
  * 
  * @param state - The Redux state
  */
-const mapStateToProps = (state :any) => ({ authentication: state.Authentication })
+const mapStateToProps = (state: any) => ({ authentication: state.Authentication })
 
 /**
  * @function mapDispatchToProps
@@ -244,7 +378,7 @@ const mapStateToProps = (state :any) => ({ authentication: state.Authentication 
  * 
  * @see /src/creators/AuthenticationCreators.js
  */
-const mapDispatchToProps = (dispatch :any) => bindActionCreators({ onLogin, onAuthenticationFormChange, onForgotPasswordToggle, onForgotPassword, push }, dispatch);
+const mapDispatchToProps = (dispatch: any) => bindActionCreators({ onLogin, onAuthenticationFormChange, onForgotPasswordToggle, onForgotPassword, push }, dispatch);
 
 /** @exports LoginContainer
  * Exports the LoginContainer components and decorates it with 

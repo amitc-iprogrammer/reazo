@@ -184,6 +184,37 @@ export function onLogin(username :string, password :string): ThunkAction<void, S
 	}
 }
 
+
+/** @function onTemporaryPasswordSuccess
+ * Is called when the user requests to be logged in.
+ * 
+ * Dispatches the LogginIn action, then dispatches the LoggedIn action
+ * or LoginFailure action depending on the result of the call to the 
+ * AuthenticationService.Login method.
+ * 
+ * @exports
+ * @param  {string} username    	-The username of the requested login. 
+ * @param  {string} password    	-The password of the requested login.
+ * 
+ * @returns {function} 
+ */
+export function onTemporaryPasswordSuccess(username :string, password :string): ThunkAction<void, StoreState, void, any> {
+	return (dispatch: Dispatch<any>, getState: () => StoreState) => {
+		dispatch(AuthenticationCreators.LoggingIn());
+
+		AuthenticationService.Login(username, password, (expiresInSeconds :number) => handleSessionTimeoutWarning(dispatch, getState, expiresInSeconds))
+			.then(
+				(res: OktaToken) => {
+					dispatch(push('/dashboard'));
+					dispatch(AuthenticationCreators.LoggedIn(res));
+				}
+			)
+			.catch((err :any) => {
+				dispatch(AuthenticationCreators.LoginFailure());
+			});
+	}
+}
+
 /** @function onLogout
  * Is called when the user requests to be logged out.
  * 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Button, Container, Dimmer, Dropdown, Header, Icon, Image, Menu, Message, Modal, Segment, Statistic } from 'semantic-ui-react';
+import { Button, Container, Dimmer, Dropdown, Header, Icon, Menu, Message, Modal, Segment, Statistic } from 'semantic-ui-react';
 import { LayoutViewProps, TopMenuProps } from './types/LayoutView';
 
 /**
@@ -105,22 +105,24 @@ export const TopMenuUser: React.StatelessComponent<TopMenuProps> =
 export const TopMenu: React.StatelessComponent<TopMenuProps> =
 	(props: TopMenuProps) =>
 		(
-			<Menu
-				inverted
-				borderless
-				color='violet'
-				style={{ borderRadius: '0'
-			}}
-			>
-				<Menu.Header>
-					<Image 
-						src='https://www.reazo.com/hs-fs/hubfs/Website%20-%20Reazo/Reazo-Full-Text-White.png?width=336&name=Reazo-Full-Text-White.png'
-					 size='small' 
-					 style={{paddingLeft:'.5em', paddingTop:'.25em' , paddingBottom:'.25em'}} 
-					/>
-				</Menu.Header>
-				<TopMenuUser {...props} />
-			</Menu>
+			<>
+			</>
+			// <Menu
+			// 	inverted
+			// 	borderless
+			// 	color='violet'
+			// 	style={{ borderRadius: '0'
+			// }}
+			// >
+			// 	<Menu.Header>
+			// 		<Image 
+			// 			src='https://www.reazo.com/hs-fs/hubfs/Website%20-%20Reazo/Reazo-Full-Text-White.png?width=336&name=Reazo-Full-Text-White.png'
+			// 		 size='small' 
+			// 		 style={{paddingLeft:'.5em', paddingTop:'.25em' , paddingBottom:'.25em'}} 
+			// 		/>
+			// 	</Menu.Header>
+			// 	<TopMenuUser {...props} />
+			// </Menu>
 		)
 /** 
  * @member {object} TopMenu.propTypes

@@ -18,7 +18,7 @@ export default ({ className = "", id="", label = "", value="", type = "", src=""
             ref={props.reference}
             checked={(props.checked === 'true' || props.checked === true) ? true : ((props.checked === 'false' || props.checked === false) ? false : null)}
             placeholder={`${placeholder}`}
-            // onChange={props.onChange}
+            onChange={props.onChange}
             value={`${value}`}
             // error={props.error}/
             readOnly={syntheticEvent ? true : false}

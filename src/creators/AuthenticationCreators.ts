@@ -48,7 +48,10 @@ export const AuthenticationActionTypes =
 	SetSessionTimeoutWarning: 'AUTHENTICATION_SET_SESSION_TIMEOUT_WARNING',
 	ClearSessionTimeoutWarning: 'AUTHENTICATION_CLEAR_SESSION_TIMEOUT_WARNING',
 	SetInactivityTimeoutWarning: 'AUTHENTICATION_SET_INACTIVITY_TIMEOUT_WARNING',
-	ClearInactivityTimeoutWarning: 'AUTHENTICATION_CLEAR_INACTIVITY_TIMEOUT_WARNING'
+	ClearInactivityTimeoutWarning: 'AUTHENTICATION_CLEAR_INACTIVITY_TIMEOUT_WARNING',
+	TemporaryPasswordSetLoading: 'TEMPORARY_PASSWORD_SET_LOADING',
+	TemporaryPasswordSetSuccess: 'TEMPORARY_PASSWORD_SET_SUCCESS',
+	TemporaryPasswordSetFailure: 'TEMPORARY_PASSWORD_SET_FAILURE',
 }
 
 /** @function SetInactivityTimeoutWarning
@@ -238,6 +241,36 @@ export const ForgotPasswordLoading: AuthenticationCreators.ForgotPasswordLoading
 export const ForgotPasswordToggle: AuthenticationCreators.ForgotPasswordToggleCreator = (): AuthenticationCreators.ForgotPasswordToggle   =>
 {
 	return { type:AuthenticationActionTypes.ForgotPasswordToggle }
+}
+
+/** @function TemporaryPasswordSetSuccess
+ * We failed to send the user a forgot password verification request.
+ * 
+ * @returns {{type: string}} AuthenticationActionTypes.TemporaryPasswordSetSuccess
+ */
+export const TemporaryPasswordSetSuccess: AuthenticationCreators.TemporaryPasswordSuccessCreator  = ( ): AuthenticationCreators.TemporaryPasswordSuccess =>
+{
+	return { type: AuthenticationActionTypes.TemporaryPasswordSetSuccess };
+}
+
+/** @function TemporaryPasswordSetFailure
+ * We failed to send the user a forgot password verification request.
+ * 
+ * @returns {{type: string}} AuthenticationActionTypes.TemporaryPasswordSetFailure
+ */
+export const TemporaryPasswordSetFailure: AuthenticationCreators.TemporaryPasswordFailureCreator = ( ): AuthenticationCreators.TemporaryPasswordFailure =>
+{
+	return { type: AuthenticationActionTypes.TemporaryPasswordSetFailure };
+}
+
+/** @function TemporaryPasswordSetLoading
+ * We are in the process of try to send the user a forgot password verification request.
+ * 
+ * @returns {{type: string}} AuthenticationActionTypes.TemporaryPasswordSetLoading
+ */
+export const TemporaryPasswordSetLoading: AuthenticationCreators.TemporaryPasswordLodingCreator = ( ): AuthenticationCreators.TemporaryPasswordLoading =>
+{
+	return { type: AuthenticationActionTypes.TemporaryPasswordSetLoading };
 }
 
 /**	@typedef FormChangeAction

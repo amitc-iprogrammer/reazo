@@ -6,6 +6,7 @@ import LayoutContainer from '../Layout/LayoutContainer';
 import LoginContainer from '../Login/LoginContainer';
 import ResetPasswordContainer from '../ResetPassword/ResetPasswordContainer';
 import WelcomeContainer from '../Welcome/WelcomeContainer';
+import InitialLogin from '../Login/InitialLogin';
 import './AppView.css';
 const AppView: React.StatelessComponent =
 	(props) =>
@@ -13,6 +14,8 @@ const AppView: React.StatelessComponent =
 			<LayoutContainer>
 				<Switch>
 					<Route path='/' exact={true} component={LoginContainer} />
+					<Route path='/InitialLogin' exact component={InitialLogin} />
+					<Route path='/login' exact component={LoginContainer} />
 					<Route path='/welcome/:userId' exact component={WelcomeContainer} />
 					<Route path='/reset-password/:token' exact component={ResetPasswordContainer} />
 					<SecureRoute path='/dashboard' exact={true} render= {DashboardContainer} />

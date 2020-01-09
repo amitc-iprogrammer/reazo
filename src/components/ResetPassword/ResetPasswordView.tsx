@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Form, Icon, Message, Popup } from 'semantic-ui-react';
+import { Form, Icon, Message, Popup, List, Button } from 'semantic-ui-react';
 import { ChangePasswordViewProps, ResetPasswordProps } from './types/ResetPasswordView';
-
+import './ResetPasswordView.css';
 /**
  * @function VerifyTokenLoadingView
  * Component to notify the user we are in the process of verifying their 
@@ -13,7 +13,7 @@ import { ChangePasswordViewProps, ResetPasswordProps } from './types/ResetPasswo
 export const VerifyTokenLoadingView = (): JSX.Element =>
 	(
 		<Message>
-				We are trying to verify the reset password token
+			We are trying to verify the reset password token
 		</Message>
 	)
 
@@ -25,11 +25,74 @@ export const VerifyTokenLoadingView = (): JSX.Element =>
  * 
  * @returns {JSX}
  */
+const options = [
+	{ key: 'm', text: 'Male', value: 'male' },
+	{ key: 'f', text: 'Female', value: 'female' },
+	{ key: 'o', text: 'Other', value: 'other' },
+]
 export const VerifyTokenFailureView = (): JSX.Element =>
 	(
-		<Message negative>
-			There was a problem verifying the provided recovery token.
-		</Message>
+		// <Message negative>
+		// 	There was a problem verifying the provided recovery token.
+		// </Message>
+		<div className="login-wrapper">
+			<div className="login-cnt">
+				<div className="left">
+					<a className="logo-login">
+						<img src={require('../../images/login-logo.png')} />
+					</a>
+					<div className="text-instructions">Instructions to set new password.</div>
+					<div className="ullogin-points">
+						<List items={[
+							'Between 8 to 32 characters in length.',
+							'At least 1 uppercase alphabetic character.',
+							'At least 1 lowercase alphabetic character.',
+							'At least 1 number OR 1 special character (!#$%_-).',
+							'Space(s) may be used but cannot be at the beginning or end of the password or phrase.',
+							'Cannot be 1 of the previous 5 passwords.'
+						]} />
+					</div>
+					<div className="text-note">Note: Passwords are case-sensitive.</div>
+				</div>
+				<div className="right">
+					<div className="title-signin title-reset">Reset your password</div>
+					<div className="signin-before">Letâ€™s update your security settings for <br /><b>adamcovert@reazo.com</b></div>
+
+
+					<div className="login-formCnt sign-form">
+						<Form>
+							<Form.Field>
+								<label className="iconInp">
+									<img src={require('../../images/icon-email.png')} />
+								</label>
+								<input type="password" className="inp" placeholder='new password' />
+							</Form.Field>
+							<Form.Field>
+								<label className="iconInp">
+									<img src={require('../../images/icon-password.png')} />
+								</label>
+								<input type="password" className="inp" placeholder='Confirm new password' />
+							</Form.Field>
+							<label className="text-security">Security Question</label>
+							<Form.Select
+								fluid
+								// label='Gender'
+								options={options}
+								className="iconSelect"
+								placeholder='Select security question'
+							/>
+							<Form.TextArea placeholder='Answer' className="anstextarea" />
+							<Button type='submit'>Submit</Button>
+
+						</Form>
+
+					</div>
+
+				</div>
+				<div className="clearfix"></div>
+			</div>
+			<div className="clearfix"></div>
+		</div>
 	)
 
 /**
@@ -39,11 +102,13 @@ export const VerifyTokenFailureView = (): JSX.Element =>
  * @exports 
  * @returns {JSX}
  */
+
 export const ChangePasswordSuccessView = (): JSX.Element =>
 	(
 		<Message positive>
 			Your password has been successfully changed!
 		</Message>
+
 	)
 
 /**
@@ -139,7 +204,7 @@ export const ChangePasswordView: React.StatelessComponent<ChangePasswordViewProp
 					header='Your new password must'
 					content={props.passwordComplexityMessages &&
 						<ul>
-							{props.passwordComplexityMessages.map( ( value: {message :string} , index :number) => ( <li key={index}>{value.message}</li> ) ) }
+							{props.passwordComplexityMessages.map((value: { message: string }, index: number) => (<li key={index}>{value.message}</li>))}
 						</ul>
 					}
 					on='focus' />

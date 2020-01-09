@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface ResetPasswordProps {
 	resetPassword: ResetPassswordReducerState;
 	onFormSubmit(): void;
@@ -9,4 +11,5 @@ export interface ChangePasswordViewProps {
 	passwordComplexityMessages: Array<{ message: string}>
 	onFormSubmit(): void;
 	onFormChange(e: any, data :any): void;
+	// onFormChange() :ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>; 
 }

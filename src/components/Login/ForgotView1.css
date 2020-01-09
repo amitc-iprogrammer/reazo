@@ -1,0 +1,963 @@
+.forgot-wrapper {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #f5f8fd;
+}
+
+.forgot-cnt {
+    margin: 0px;
+    padding: 0px;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.forgot-cnt .content {
+    margin: 0px;
+    padding: 0px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cntForgot {
+    margin: 2% auto 0px auto;
+    padding: 30px 46px;
+    width: 570px;
+    display: block;
+    background: #fff;
+    box-shadow: 0px 0px 44px #e3e8ee;
+}
+
+.cntForgot .logo-forgot {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    text-decoration: none;
+}
+
+.cntForgot .title-forgot {
+    margin: 14px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 36px;
+    font-weight: 400;
+    color: #2b2b2b;
+}
+
+.forgot-number {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-number .circle {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 46px;
+    background: #FFF;
+    border: 2px solid #e9ebf0;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b2b2b;
+}
+
+.forgot-number .circle-line {
+    margin: 24px 26px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 110px;
+    height: 2px;
+    background: #e8ebf0;
+}
+
+.forgot-number .circle:hover,
+.forgot-number .circle.active {
+    color: #fff;
+    border: 2px solid #fff;
+    background: rgba(63, 0, 224, 1);
+    line-height: 46px;
+    background: -moz-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(63, 0, 224, 1)), color-stop(100%, rgba(142, 45, 226, 1)));
+    background: -webkit-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -o-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: linear-gradient(to bottom, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3f00e0', endColorstr='#8e2de2', GradientType=0);
+}
+
+.text-worry {
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 24px;
+    font: 500;
+}
+
+.text-worry-everyone {
+    margin: 10px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 14px;
+}
+
+.forgot-form-wrap {
+    margin: 30px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .signin-row {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .sign-form {
+    margin: 30px auto 0px auto;
+    padding: 0px 50px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-form-wrap .signin-row .emailid {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #f5f8fd;
+    background-image: url(../../images/icon-back.jpg);
+    background-repeat: no-repeat;
+    color: #9f9f9f;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    box-shadow: 0px 0px 0px transparent;
+}
+
+.forgot-form-wrap .signin-row .emailid:focus {
+    background-color: #ffffff;
+    color: #2b2b2b;
+    box-shadow: 0px 0px 16px #caacfa;
+}
+
+.forgot-form-wrap .sign-form .text-dont {
+    margin: 0px;
+}
+
+.text-dont a {
+    color: #4200e0;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question {
+    background: #fff;
+    border: 2px solid #e8ebf0;
+    text-align: left;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #2b2b2b;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question:focus,
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer:focus {
+    box-shadow: inherit;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer {
+    background-color: #f5f8fd;
+    background-image: inherit;
+    border: 0px;
+    text-align: left;
+    padding: 0 44px 0 20px;
+    font-size: 14px;
+    color: #9f9f9f;
+}
+
+.forgot-form-wrap .signin-row .pos-icon.pos-eye {
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+    left: inherit;
+    right: 20px;
+}
+
+.forgot-form-wrap .signin-row .removeInputBack {
+    background-image: none;
+    padding-left: 20px;
+}
+
+
+/* form */
+
+.sign-form .ui.form .field {
+    position: relative;
+    margin: 20px 0px;
+}
+
+.sign-form .ui.form .field .inp {
+    margin: 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    background: #f5f8fd;
+    font-size: 14px;
+    color: #9f9f9f;
+    box-shadow: 0px 0px 10px transparent;
+    position: relative;
+}
+
+.sign-form .ui.form .field .iconInp {
+    margin: 0px;
+    padding: 14px 0px 0px 0px;
+    width: 50px;
+    height: 50px;
+    background-image: url(../../images/icon-back.jpg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    position: absolute;
+    top: 0px;
+    z-index: 9;
+    border-radius: 6px 0px 0px 6px;
+    text-align: center;
+}
+
+.sign-form .ui.form .field .inp:focus {
+    background: #fff;
+    box-shadow: 0px 0px 20px #f1eafd;
+    color: #2b2b2b;
+}
+
+
+/* form */
+
+
+/** Responsive css start **/
+
+@media screen and (max-width: 667px) {}
+
+@media screen and (max-width: 600px) {
+    .cntForgot {
+        width: 92%;
+        padding: 30px 20px;
+    }
+    .forgot-form-wrap .sign-form {
+        padding: 0px 0px;
+    }
+}
+
+@media screen and (max-width: 569px) {}
+
+@media screen and (max-width: 533px) {
+    .forgot-number .circle-line {
+        width: 98px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .forgot-number .circle-line {
+        display: none;
+    }
+    .forgot-number {
+        text-align: center;
+    }
+    .forgot-number .circle {
+        float: none;
+        display: inline-block;
+        margin: 0px 10px;
+    }
+    .cntForgot .title-forgot {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 424px) {}
+
+@media screen and (max-width: 414px) {}
+
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 390px) {}
+
+@media screen and (max-width: 375px) {}
+
+@media screen and (max-width: 360px) {}
+
+@media screen and (max-width: 320px) {}
+
+.forgot-wrapper {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #f5f8fd;
+}
+
+.forgot-cnt {
+    margin: 0px;
+    padding: 0px;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.forgot-cnt .content {
+    margin: 0px;
+    padding: 0px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cntForgot {
+    margin: 2% auto 0px auto;
+    padding: 30px 46px;
+    width: 570px;
+    display: block;
+    background: #fff;
+    box-shadow: 0px 0px 44px #e3e8ee;
+}
+
+.cntForgot .logo-forgot {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    text-decoration: none;
+}
+
+.cntForgot .title-forgot {
+    margin: 14px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 36px;
+    font-weight: 400;
+    color: #2b2b2b;
+}
+
+.forgot-number {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-number .circle {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 46px;
+    background: #FFF;
+    border: 2px solid #e9ebf0;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b2b2b;
+}
+
+.forgot-number .circle-line {
+    margin: 24px 26px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 110px;
+    height: 2px;
+    background: #e8ebf0;
+}
+
+.forgot-number .circle:hover,
+.forgot-number .circle.active {
+    color: #fff;
+    border: 2px solid #fff;
+    background: rgba(63, 0, 224, 1);
+    line-height: 46px;
+    background: -moz-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(63, 0, 224, 1)), color-stop(100%, rgba(142, 45, 226, 1)));
+    background: -webkit-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -o-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: linear-gradient(to bottom, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3f00e0', endColorstr='#8e2de2', GradientType=0);
+}
+
+.text-worry {
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.text-worry-everyone {
+    margin: 10px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 14px;
+}
+
+.forgot-form-wrap {
+    margin: 30px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .signin-row {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .sign-form {
+    margin: 30px auto 0px auto;
+    padding: 0px 50px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-form-wrap .signin-row .emailid {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #f5f8fd;
+    background-image: url(../../images/icon-back.jpg);
+    background-repeat: no-repeat;
+    color: #9f9f9f;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    box-shadow: 0px 0px 0px transparent;
+}
+
+.forgot-form-wrap .signin-row .emailid:focus {
+    background-color: #ffffff;
+    color: #2b2b2b;
+    box-shadow: 0px 0px 16px #caacfa;
+}
+
+.forgot-form-wrap .sign-form .text-dont {
+    margin: 0px;
+}
+
+.text-dont a {
+    color: #4200e0;
+    text-decoration: underline;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question {
+    background: #fff;
+    border: 2px solid #e8ebf0;
+    text-align: left;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #2b2b2b;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question:focus,
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer:focus {
+    box-shadow: inherit;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer {
+    background-color: #f5f8fd;
+    background-image: inherit;
+    border: 0px;
+    text-align: left;
+    padding: 0 44px 0 20px;
+    font-size: 14px;
+    color: #9f9f9f;
+}
+
+.forgot-form-wrap .signin-row .pos-icon.pos-eye {
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+    left: inherit;
+    right: 20px;
+}
+
+.forgot-form-wrap .signin-row .removeInputBack {
+    background-image: none;
+    padding-left: 20px;
+}
+
+
+/* form */
+
+.sign-form .ui.form .field {
+    position: relative;
+    margin: 20px 0px;
+}
+
+.sign-form .ui.form .field .inp {
+    margin: 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    background: #f5f8fd;
+    font-size: 14px;
+    color: #9f9f9f;
+    box-shadow: 0px 0px 10px transparent;
+    position: relative;
+}
+
+.sign-form .ui.form .field .inp.inpLeft {
+    padding-left: 20px;
+}
+
+.sign-form .ui.form .field .inp.inpLeft.inpRight {
+    padding-right: 40px;
+}
+
+.text-favourite {
+    background: #fff;
+    border: 2px solid #e8ebf0;
+    color: #2b2b2b;
+    border-radius: 6px 0px 0px 6px;
+    padding: 14px 0px 14px 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.sign-form .ui.form .field .iconEye {
+    margin: 0px;
+    padding: 14px 0px 0px 0px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    z-index: 9;
+    border-radius: 6px 0px 0px 6px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sign-form .ui.form .field .inp:focus {
+    background: #fff;
+    box-shadow: 0px 0px 20px #f1eafd;
+    color: #2b2b2b;
+}
+
+
+/* form */
+
+
+/** Responsive css start **/
+
+@media screen and (max-width: 667px) {}
+
+@media screen and (max-width: 600px) {
+    .cntForgot {
+        width: 92%;
+        padding: 30px 20px;
+    }
+    .forgot-form-wrap .sign-form {
+        padding: 0px 0px;
+    }
+}
+
+@media screen and (max-width: 569px) {}
+
+@media screen and (max-width: 533px) {
+    .forgot-number .circle-line {
+        width: 98px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .forgot-number .circle-line {
+        display: none;
+    }
+    .forgot-number {
+        text-align: center;
+    }
+    .forgot-number .circle {
+        float: none;
+        display: inline-block;
+        margin: 0px 10px;
+    }
+    .cntForgot .title-forgot {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 424px) {}
+
+@media screen and (max-width: 414px) {}
+
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 390px) {}
+
+@media screen and (max-width: 375px) {}
+
+@media screen and (max-width: 360px) {}
+
+@media screen and (max-width: 320px) {}
+
+
+/** Responsive css start **/
+
+
+/** forgotPasswordSecurityQuestionView.css **/
+
+.forgot-wrapper {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #f5f8fd;
+}
+
+.forgot-cnt {
+    margin: 0px;
+    padding: 0px;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.forgot-cnt .content {
+    margin: 0px;
+    padding: 0px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cntForgot {
+    margin: 2% auto 0px auto;
+    padding: 30px 46px;
+    width: 570px;
+    display: block;
+    background: #fff;
+    box-shadow: 0px 0px 44px #e3e8ee;
+}
+
+.cntForgot .logo-forgot {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    text-decoration: none;
+}
+
+.cntForgot .title-forgot {
+    margin: 14px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 36px;
+    font-weight: 400;
+    color: #2b2b2b;
+}
+
+.forgot-number {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-number .circle {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 46px;
+    background: #FFF;
+    border: 2px solid #e9ebf0;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b2b2b;
+}
+
+.forgot-number .circle-line {
+    margin: 24px 26px;
+    padding: 0px;
+    display: block;
+    float: left;
+    width: 110px;
+    height: 2px;
+    background: #e8ebf0;
+}
+
+.forgot-number .circle:hover,
+.forgot-number .circle.active {
+    color: #fff;
+    border: 2px solid #fff;
+    background: rgba(63, 0, 224, 1);
+    line-height: 46px;
+    background: -moz-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(63, 0, 224, 1)), color-stop(100%, rgba(142, 45, 226, 1)));
+    background: -webkit-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -o-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    background: linear-gradient(to bottom, rgba(63, 0, 224, 1) 0%, rgba(142, 45, 226, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3f00e0', endColorstr='#8e2de2', GradientType=0);
+}
+
+.text-worry {
+    margin: 20px 0px 20px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.text-worry-everyone {
+    margin: 10px 0px;
+    padding: 0px;
+    display: block;
+    font-size: 14px;
+}
+
+.forgot-form-wrap {
+    margin: 30px 0px 0px 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .signin-row {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.forgot-form-wrap .sign-form {
+    margin: 30px auto 0px auto;
+    padding: 0px 50px;
+    display: block;
+    width: 100%;
+}
+
+.forgot-form-wrap .signin-row .emailid {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 4px;
+    background-color: #f5f8fd;
+    background-image: url(../../images/icon-back.jpg);
+    background-repeat: no-repeat;
+    color: #9f9f9f;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    box-shadow: 0px 0px 0px transparent;
+}
+
+.forgot-form-wrap .signin-row .emailid:focus {
+    background-color: #ffffff;
+    color: #2b2b2b;
+    box-shadow: 0px 0px 16px #caacfa;
+}
+
+.forgot-form-wrap .sign-form .text-dont {
+    margin: 0px;
+}
+
+.text-dont a {
+    color: #4200e0;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question {
+    background: #fff;
+    border: 2px solid #e8ebf0;
+    text-align: left;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #2b2b2b;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question:focus,
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer:focus {
+    box-shadow: inherit;
+}
+
+.forgot-form-wrap .signin-row .emailid.favourite-question-answer {
+    background-color: #f5f8fd;
+    background-image: inherit;
+    border: 0px;
+    text-align: left;
+    padding: 0 44px 0 20px;
+    font-size: 14px;
+    color: #9f9f9f;
+}
+
+.forgot-form-wrap .signin-row .pos-icon.pos-eye {
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+    left: inherit;
+    right: 20px;
+}
+
+.forgot-form-wrap .signin-row .removeInputBack {
+    background-image: none;
+    padding-left: 20px;
+}
+
+
+/* form */
+
+.sign-form .ui.form .field {
+    position: relative;
+    margin: 20px 0px;
+}
+
+.sign-form .ui.form .field .inp {
+    margin: 0px;
+    padding: 0px 20px 0px 70px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    background: #f5f8fd;
+    font-size: 14px;
+    color: #9f9f9f;
+    box-shadow: 0px 0px 10px transparent;
+    position: relative;
+}
+
+.sign-form .ui.form .field .inp.inpLeft {
+    padding-left: 20px;
+}
+
+.sign-form .ui.form .field .inp.inpLeft.inpRight {
+    padding-right: 40px;
+}
+
+.text-favourite {
+    background: #fff;
+    border: 2px solid #e8ebf0;
+    color: #2b2b2b;
+    border-radius: 6px 0px 0px 6px;
+    padding: 14px 0px 14px 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.sign-form .ui.form .field .iconEye {
+    margin: 0px;
+    padding: 14px 0px 0px 0px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    z-index: 9;
+    border-radius: 6px 0px 0px 6px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sign-form .ui.form .field .inp:focus {
+    background: #fff;
+    box-shadow: 0px 0px 20px #f1eafd;
+    color: #2b2b2b;
+}
+
+
+/* form */
+
+
+/** Responsive css start **/
+
+@media screen and (max-width: 667px) {}
+
+@media screen and (max-width: 600px) {
+    .cntForgot {
+        width: 92%;
+        padding: 30px 20px;
+    }
+    .forgot-form-wrap .sign-form {
+        padding: 0px 0px;
+    }
+}
+
+@media screen and (max-width: 569px) {}
+
+@media screen and (max-width: 533px) {
+    .forgot-number .circle-line {
+        width: 98px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .forgot-number .circle-line {
+        display: none;
+    }
+    .forgot-number {
+        text-align: center;
+    }
+    .forgot-number .circle {
+        float: none;
+        display: inline-block;
+        margin: 0px 10px;
+    }
+    .cntForgot .title-forgot {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 424px) {}
+
+@media screen and (max-width: 414px) {}
+
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 390px) {}
+
+@media screen and (max-width: 375px) {}
+
+@media screen and (max-width: 360px) {}
+
+@media screen and (max-width: 320px) {}
+
+
+/** Responsive css start **/
