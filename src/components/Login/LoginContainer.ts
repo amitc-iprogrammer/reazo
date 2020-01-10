@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { onAuthenticationFormChange, onForgotPassword, onForgotPasswordToggle, onLogin } from '../../actions/AuthenticationActions';
 import { Validate, ValidateForm } from '../../lib/Validation';
-import * as Validation from 'src/lib/Validation';
+// import * as Validation from 'src/lib/Validation';
 import { Validation1 } from '../../utilities/validate';
 import LoginLayout from './LoginLayout';
 import { LoginView } from './LoginView';
@@ -38,7 +38,8 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 		errorMessage: false,
 		emailValidationErrorMessage: '',
 		emptyFieldError: '',
-		classAdd: false
+		passwordClassAdd: false,
+		emailClassAdd: false
 	};
 
 	/**
@@ -191,7 +192,6 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 			this.setState({ errorMessage: true })
 		}
 	}
-	
 
 	/**
 	 * @function handleFormChange
@@ -206,18 +206,24 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 		const targetField = e.target.name;
 		const fieldValue = e.target.value;
 		const emailValidation = Validation1.isValidEmail(fieldValue)
-		console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
-		if (fieldValue) {
-			this.setState({ classAdd: true })
-		} else if (!fieldValue) {
-			this.setState({ classAdd: false })
+		// console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
+		if (targetField === "username" && fieldValue) {
+			this.setState({ emailClassAdd: true })
+		} else if (targetField === "username" && !fieldValue) {
+			this.setState({ emailClassAdd: false })
 		}
-		if (targetField === "username" && !emailValidation) {
-			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
+		if (targetField === "password" && fieldValue) {
+			this.setState({ passwordClassAdd: true })
+		} else if (targetField === "password" && !fieldValue) {
+			this.setState({ passwordClassAdd: false })
 		}
-		else if (emailValidation) {
+		if (targetField === "username" && !fieldValue || emailValidation) {
 			this.setState({ emailValidationErrorMessage: '' })
 		}
+		else if (targetField === "username" && !emailValidation) {
+			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
+		}
+	
 		let fieldIsValid = false;
 		console.log('ValidationValidationValidationValidation', emailValidation)
 		const validators = this.formValidators();
@@ -244,16 +250,26 @@ export class LoginContainer extends React.Component<LoginContainerProps> {
 	private handleTemporaryPasswordFormChange = (e: any, data: any) => {
 		const targetField = e.target.name;
 		const fieldValue = e.target.value;
-		{ targetField == "email" ? this.setState({ emailTemporaryData: fieldValue }) : targetField == "password" ? this.setState({ passWordTemporaryData: fieldValue }) : '' }
+		{ targetField == "username" ? this.setState({ emailTemporaryData: fieldValue }) : targetField == "password" ? this.setState({ passWordTemporaryData: fieldValue }) : '' }
 		let fieldIsValid = true;
 		const emailValidation = Validation1.isValidEmail(fieldValue)
-		console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
-
-		if (targetField === "username" && !emailValidation) {
-			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
+		// console.log('BuildComplexityValidatorsBuildComplexityValidators', Validation.BuildComplexityValidators(fieldValue))
+		if (targetField === "username" && fieldValue) {
+			this.setState({ emailClassAdd: true })
+		} else if (targetField === "username" && !fieldValue) {
+			this.setState({ emailClassAdd: false })
 		}
-		else if (emailValidation) {
+		if (targetField === "password" && fieldValue) {
+			this.setState({ passwordClassAdd: true })
+		} else if (targetField === "password" && !fieldValue) {
+			this.setState({ passwordClassAdd: false })
+		}
+
+		if (targetField === "username" && !fieldValue || emailValidation) {
 			this.setState({ emailValidationErrorMessage: '' })
+		}
+		else if (targetField === "username" && !emailValidation) {
+			this.setState({ emailValidationErrorMessage: this.temporaryPasswordData.emailErrorMessage })
 		}
 		const validators = this.formValidators();
 

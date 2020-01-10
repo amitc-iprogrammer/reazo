@@ -30,7 +30,7 @@ export const LoginView = (props: LoginViewProps) =>
 					<a href="javascript:void()" className="logo">
 						<img src={require('../../images/reazo-logo.png')} />
 					</a>
-					<h1 className="hd-title">Welcome to <span>Reazo!</span></h1>
+					<h1 className="hd-title">Welcome to <b><span>Reazo!</span></b></h1>
 					<p className="login-p">
 						At Reazo.com you will find useful discussion topics about buying and selling real estate, using real estate as investments, buying foreclosures and flipping houses, financing real estate purchases and additional tools to help buyers and sellers as they prepare to make real estate decisions.
                 </p>
@@ -65,7 +65,7 @@ export const LoginView = (props: LoginViewProps) =>
 								<label className="iconInp">
 									<img src={require('../../images/icon-email.png')} />
 								</label>
-								<input type="text" onChange={props.onFormChange} name="username" className={props.onStateChange.classAdd ? "inp focus" : 'inp'} placeholder='Email Address'
+								<input type="text" onChange={props.onFormChange} name="username" className={props.onStateChange.emailClassAdd ? "inp focus" : 'inp'} placeholder='Email address'
 									value={props.authentication.form.username.value}
 									error={!props.authentication.form.username.isValid}
 								/>
@@ -78,67 +78,18 @@ export const LoginView = (props: LoginViewProps) =>
 								<input type="password" name="password" onChange={props.onFormChange}
 									value={props.authentication.form.password.value}
 									error={!props.authentication.form.password.isValid}
-									className="inp" placeholder='Password' />
+									className={props.onStateChange.passwordClassAdd ? "inp focus" : 'inp'} placeholder='Password' />
 							</Form.Field>
 							<Form.Field>
 								<a href="javascript:void()" onClick={props.onForgotPasswordToggle} className="anch-forgot">Forgot your password?</a>
 							</Form.Field>
 							<Button onSubmit={props.onFormSubmit} loading={props.authentication.loggingIn} type='submit'>Sign In</Button>
 						</Form>
-						<div className="text-dont">In case you do not know the temporary password.<br />Please contact Reazo <a href="javascript:void()">support team</a></div>
+						<div className="text-dont">Don't have a Reazo account?<a href="javascript:void()"> sign up now!</a></div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		// <Form onSubmit={props.onFormSubmit}>
-		// 	<Form.Input 
-		// 		placeholder={'Email address'}
-		// 		label={'Email address'}
-		// 		name='username'
-		// 		icon='mail'
-		// 		iconPosition='left'
-		// 		onChange={props.onFormChange} 
-		// 		value={props.authentication.form.username.value} 
-		// 		error={!props.authentication.form.username.isValid} 
-		// 	/>
-		// 	<Form.Input 
-		// 		placeholder={'Password'}
-		// 		label={'Password'}
-		// 		icon='lock'
-		// 		iconPosition='left'
-		// 		type='password'
-		// 		name='password'
-		// 		onChange={props.onFormChange} 
-		// 		value={props.authentication.form.password.value} 
-		// 		error={!props.authentication.form.password.isValid} 
-		// 	/>
-		// 	<Form.Field 
-		// 		style={{textDecoration:'underline', color: 'LightSkyBlue', cursor:'pointer', fontSize:'smaller', float:'left', marginTop:'-1em'}}
-		// 		onClick={props.onForgotPasswordToggle} 
-		// 	>
-		// 		Forgot Password?
-		// 	</Form.Field>
-		// 	<Message 
-		// 		icon={true}
-		// 		negative={true}
-		// 		hidden={!props.authentication.loginError}>
-		// 		<Icon name='exclamation circle' />
-		// 		<Message.Content>
-		// 			<Message.Header>
-		// 					Sorry, your login attempt failed.
-		// 			</Message.Header>
-		// 		</Message.Content>
-		// 	</Message>
-		// 	<Form.Button 
-		// 		content={'Log In'}
-		// 		className='loginButton'
-		// 		color='violet'
-		// 		fluid={true}
-		// 		type='submit' 
-		// 		loading={props.authentication.loggingIn} 
-		// 	/>
-		// </Form>
 	);
 
 /** 
@@ -206,7 +157,8 @@ export const TemporaryPasswordView = (props: TemporaryPasswordViewProps) =>
 					<a href="javascript:void()" className="logo">
 						<img src={require('../../images/reazo-logo.png')} />
 					</a>
-					<h1 className="hd-title">Welcome to <span>Reazo!</span></h1>
+					<h1 className="hd-title">Hello <b><span>Adam Covert!</span></b></h1>
+					<h1 className="hd-title">Welcome to <b><span>Reazo!</span></b></h1>
 					<p className="login-p">
 						At Reazo.com you will find useful discussion topics about buying and selling real estate, using real estate as investments, buying foreclosures and flipping houses, financing real estate purchases and additional tools to help buyers and sellers as they prepare to make real estate decisions.
                 </p>
@@ -214,7 +166,7 @@ export const TemporaryPasswordView = (props: TemporaryPasswordViewProps) =>
 				</div>
 				<div className="right">
 
-					<div className="login-error" id="login-error">
+					<div className={props.onStateChange.errorMessage ? "login-error show-error" : "login-error"} id="login-error">
 						<div className="close-circle">
 							<img src={require('../../images/icon-close-circle.png')} />
 						</div>
@@ -234,30 +186,19 @@ export const TemporaryPasswordView = (props: TemporaryPasswordViewProps) =>
 								<label className="iconInp">
 									<img src={require('../../images/icon-email.png')} />
 								</label>
-								<input type="text" onChange={props.onFormChange} name="email" className="inp" placeholder='Email Address' />
-								{/* <Form.Input
-                                        placeholder={'Email address'}
-                                        // label={'Email address'}
-                                        className="inp"
-                                        type="text"
-                                        // name='username'
-                                        // icon='mail'
-                                        // iconPosition='left'
-                                        onChange={this.props.onFormChange}
-                                        value={this.props.authentication.form.username.value}
-                                        error={!this.props.authentication.form.username.isValid}
-                                    /> */}
+								<input type="text" onChange={props.onFormChange} name="username" className={props.onStateChange.emailClassAdd ? "inp focus" : 'inp'} placeholder='Email address' />
+								<span className="spanError">{props.onStateChange.emailValidationErrorMessage}</span>
 							</Form.Field>
 							<Form.Field>
 								<label className="iconInp">
 									<img src={require('../../images/icon-password.png')} />
 								</label>
-								<input type="password" name="password" onChange={props.onFormChange} className="inp" placeholder='Temporary Password' />
+								<input type="password" name="password" onChange={props.onFormChange} className={props.onStateChange.passwordClassAdd ? "inp focus" : 'inp'} placeholder='Temporary password' />
 							</Form.Field>
 
 							<Button onClick={props.onFormSubmit} type='submit'>Login</Button>
 						</Form>
-						<div className="text-dont">In case you do not know the temporary password.<br />Please contact Reazo <a href="javascript:void()">support team</a></div>
+						<div className="text-dont">In case you do not know the temporary password,<br />please contact Reazo <a href="javascript:void()">support team.</a></div>
 					</div>
 				</div>
 			</div>
@@ -331,42 +272,6 @@ TemporaryPasswordView.defaultProps = {
  */
 export const ForgotPasswordView = (props: ForgotPasswordViewProps) =>
 	(
-		// <Form onSubmit={props.onFormSubmit}>
-		// 	<Form.Input
-		// 		placeholder={'Email address'}
-		// 		label={'Email address'}
-		// 		name='username'
-		// 		icon='mail'
-		// 		iconPosition='left'
-		// 		onChange={props.onFormChange}
-		// 		value={props.authentication.form.username.value}
-		// 		error={!props.authentication.form.username.isValid}
-		// 	/>
-		// 	<Form.Button
-		// 		content={'Reset Password'}
-		// 		type='submit'
-		// 		color='violet'
-		// 		fluid={true}
-		// 		loading={props.authentication.form.forgotPasswordLoading}
-		// 	/>
-		// 	<Form.Field
-		// 		style={{ textDecoration: 'underline', color: 'LightSkyBlue', cursor: 'pointer', fontSize: 'smaller', marginTop: '-1em' }}
-		// 		onClick={props.onForgotPasswordToggle}
-		// 	>
-		// 		Go Back To Login
-		// </Form.Field>
-		// <Message
-		// 	icon={true}
-		// 	negative={true}
-		// 	hidden={!props.authentication.form.forgotPasswordError}>
-		// 	<Icon name='exclamation circle' />
-		// 	<Message.Content>
-		// 		<Message.Header>
-		// 			Sorry, something went wrong.'
-		// 		</Message.Header>
-		// 	</Message.Content>
-		// </Message>
-		// </Form>
 		<div className="forgot-wrapper">
 			<div className="forgot-cnt">
 				<div className="content">

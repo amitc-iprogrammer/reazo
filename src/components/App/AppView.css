@@ -1,15 +1,11 @@
 @import url("../Login/Login.css");
-
 /* @import url("dashboard-contract.css"); */
 
+/* Font Face */
 
 /* Font Face */
 
-
-/* Font Face */
-
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -28,19 +24,14 @@ img {
     max-width: 100%;
 }
 
-a,
-a:hover {
+a, a:hover {
     text-decoration: none;
 }
-
 
 /* this css for ios on focus issue*/
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    select,
-    textarea,
-    input,
-    .input-text {
+    select, textarea, input, .input-text {
         font-size: 16px;
     }
     .input-text:focus {
@@ -48,13 +39,9 @@ a:hover {
     }
 }
 
-
 /* this css for ios on focus issue*/
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+input:focus, select:focus, textarea:focus, button:focus {
     outline: 0px;
 }
 
@@ -74,10 +61,7 @@ button:focus {
     color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     margin: 0px;
     padding: 0px;
     padding: 0px;
@@ -87,9 +71,7 @@ h4 {
     line-height: inherit;
 }
 
-input,
-select,
-textarea {
+input, select, textarea {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -107,7 +89,6 @@ textarea {
     border-radius: 4px;
 }
 
-
 /* custom check box */
 
 .checkboxCustom {
@@ -123,7 +104,6 @@ textarea {
     user-select: none;
 }
 
-
 /* Hide the browser's default checkbox */
 
 .checkboxCustom input {
@@ -133,7 +113,6 @@ textarea {
     height: 0;
     width: 0;
 }
-
 
 /* Create a custom checkbox */
 
@@ -147,24 +126,26 @@ textarea {
     border-radius: 4px;
     background-color: #fff;
 }
-.ui.segment{
+
+.ui.segment {
     margin: 0rem 0!important;
 }
-::-webkit-scrollbar-thumb{ background: rgba(0,0,0,10);}
- 
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 10);
+}
+
 /* On mouse-over, add a grey background color */
 
 .checkboxCustom:hover input~.checkmark {
     background-color: #fff;
 }
 
-
 /* When the checkbox is checked, add a blue background */
 
 .checkboxCustom input:checked~.checkmark {
     background-color: #fff;
 }
-
 
 /* Create the checkmark/indicator (hidden when not checked) */
 
@@ -174,13 +155,11 @@ textarea {
     display: none;
 }
 
-
 /* Show the checkmark when checked */
 
 .checkboxCustom input:checked~.checkmark:after {
     display: block;
 }
-
 
 /* Style the checkmark/indicator */
 
@@ -200,11 +179,10 @@ textarea {
     clear: both;
 }
 
-
 /** all **/
 
 .ui.button {
-    margin: 30px auto 30px auto;
+    margin: 20px auto 20px auto;
     padding: 16px 34px;
     /* width: 108px;  height: 50px; */
     display: block;
@@ -225,6 +203,7 @@ textarea {
 .ui.animated.button .visible.content {
     margin-right: 0px;
 }
+
 /* 
 .ui.button.btnBasic {
     margin: 30px auto 30px auto;
@@ -256,7 +235,6 @@ textarea {
     margin-left: 50px;
 }
 
-
 /** all **/
 
 @media screen and (max-width: 480px) {
@@ -264,3 +242,90 @@ textarea {
         padding: 20px 20px
     }
 }
+
+/*
+
+@media screen and (max-width: 992px) {
+    .downarrow-mobile {
+        display: block;
+        padding-bottom: 30px;
+        margin-bottom: 0px;
+    }
+    .loginWrapper .logincnt {
+        width: 100%;
+        height: 100%;
+        margin: 0% auto;
+    }
+    .loginWrapper .logincnt .left {
+        margin: 0px auto;
+        display: block;
+        float: none;
+        height: 100%;
+    }
+    .logo {
+        margin: 0px auto 0px auto;
+        padding: 40px 0px 0px 0px;
+        display: block;
+        width: 139px;
+        height: 100%;
+    }
+    .login-p, .button-group {
+        display: none;
+    }
+    .loginWrapper .logincnt .right {
+        margin: 0px auto;
+        display: block;
+        float: none;
+        height: 100%;
+        padding-bottom: 10px;
+        padding-top: 30px;
+    }
+    .login-error {
+        margin: 0px auto 0px auto;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width: 959px) {}
+
+@media screen and (max-width: 823px) {}
+
+@media screen and (max-width: 800px) {}
+
+@media screen and (max-width: 768px) {
+    .login-error {
+        visibility: hidden;
+        width: 75%;
+    }
+    .login-error .cnt {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 667px) {}
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 569px) {}
+
+@media screen and (max-width: 533px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 424px) {}
+
+@media screen and (max-width: 414px) {}
+
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 390px) {}
+
+@media screen and (max-width: 375px) {}
+
+@media screen and (max-width: 360px) {}
+
+@media screen and (max-width: 320px) {}
+
+*/
+
+/** Responsive css start **/
