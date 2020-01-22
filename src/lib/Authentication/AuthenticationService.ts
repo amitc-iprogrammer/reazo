@@ -1,5 +1,4 @@
-import * as  dotenv from  'dotenv';
-dotenv.config();
+
 import * as OktaAuth from '@okta/okta-auth-js';
 import * as moment from 'moment';
 import Config from '../Config/Config';
@@ -335,11 +334,11 @@ const GetPasswordComplexity = async (): Promise<IOktaPasswordComplexity> => {
 	return await ReazoApi.GetPasswordComplexity();
 }
 
-const ChangePassword = async (userId: string, oldPassword: string, newPassword: string): Promise<void> => {
+const ChangePassword = async (userId: string,  oldPassword: string, newPassword: string): Promise<void> => {
 	return await ReazoApi.ChangePassword(userId, oldPassword, newPassword);
 }
 
-const ChangeSecurityQuestion = async (userId: string, password: string, securityQuestion :string, securityAnswer :string): Promise<void> => {
+const ChangeSecurityQuestion = async (userId: string, password: string, securityQuestion: string, securityAnswer: string): Promise<void> => {
 	return await ReazoApi.ChangeSecurityQuestion(userId, password, securityQuestion, securityAnswer);
 }
 

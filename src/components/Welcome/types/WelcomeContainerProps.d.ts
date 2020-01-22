@@ -8,4 +8,7 @@ export interface WelcomeContainerProps {
 	onVerifyUserId(userId :string) :void
 	onFormChange(formId :string, e: any, data: any) :void
 	onFormSubmit(formId :string) :void
+	handleTemporaryPasswordSubmit: any
+	showWelcomeContent:any
+	handleCloseError:any
 }

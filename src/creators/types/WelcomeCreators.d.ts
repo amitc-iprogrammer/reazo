@@ -8,23 +8,25 @@ declare namespace WelcomeCreators {
 		VerifyUserIdSuccess |
 		VerifyUserIdFailure |
 		FormChange |
+		FormSubmit |
 		SetPasswordValidators |
 		SetConfirmPasswordValidatorCompareValue |
 		SetFormError |
 		ClearFormError |
 		SetFormLoading |
-		SetUserId | 
+		SetUserId |
 		SetFormComplete
 
 
 	interface SetUserId extends Action {
-		userId :string
-	}	
+		userId: string
+	}
 
 	interface VerifyUserIdLoading extends Action { }
 
 	interface VerifyUserIdSuccess extends Action {
 		accountLogin: string
+		success: boolean
 		passwordComplexity: IOktaPasswordComplexity
 	}
 
@@ -34,7 +36,13 @@ declare namespace WelcomeCreators {
 		formId: string
 		fieldId: string
 		value: string
-		error: boolean
+		error: boolean,
+	}
+	interface FormSubmit extends Action {
+		formId: string
+		fieldId: string
+		value: string
+		error: boolean,
 	}
 
 	interface SetPasswordValidators extends Action {
@@ -46,21 +54,23 @@ declare namespace WelcomeCreators {
 	}
 
 	interface SetFormError extends Action {
-		formId :string
+		formId: string
 		errorMessage: string
+		emailValidationErrorMessage: string
+
 	}
 
 	interface ClearFormError extends Action {
-		formId :string
+		formId: string
 	}
 
 	interface SetFormLoading extends Action {
-		formId :string
+		formId: string
 		loading: boolean
 	}
 
 	interface SetFormComplete extends Action {
-		formId :string
+		formId: string
 		complete: boolean
 	}
 
@@ -70,7 +80,7 @@ declare namespace WelcomeCreators {
 	}
 
 	interface VerifyUserIdSuccessCreator extends ActionCreator<VerifyUserIdSuccess> {
-		(accountLogin: string, passwordComplexity: IOktaPasswordComplexity): VerifyUserIdSuccess;
+		(accountLogin: string, success: boolean, passwordComplexity: IOktaPasswordComplexity): VerifyUserIdSuccess;
 	}
 
 	interface VerifyUserIdFailureCreator extends ActionCreator<VerifyUserIdFailure> {
@@ -78,8 +88,14 @@ declare namespace WelcomeCreators {
 	}
 
 	interface FormChangeCreator extends ActionCreator<FormChange> {
-		(formId: string, fieldId: string, value: string, error: boolean): FormChange;
+		(formId: string, fieldId: string, value: string, error: boolean,
+		): FormChange;
 	}
+	interface FormSubmitCreator extends ActionCreator<FormChange> {
+		(formId: string, fieldId: string, value: string, error: boolean,
+		): FormSubmit;
+	}
+
 
 	interface SetPasswordValidatorsCreator extends ActionCreator<SetPasswordValidators> {
 		(validators: IValidator[]): SetPasswordValidators;
@@ -91,23 +107,23 @@ declare namespace WelcomeCreators {
 
 
 	interface SetFormErrorCreator extends ActionCreator<SetFormError> {
-		(formId :string, errorMessage: string): SetFormError;
+		(formId: string, errorMessage: string, emailValidationErrorMessage: string): SetFormError;
 	}
 
 	interface ClearFormErrorCreator extends ActionCreator<ClearFormError> {
-		(formId :string): ClearFormError;
+		(formId: string): ClearFormError;
 	}
 
 	interface SetFormLoadingCreator extends ActionCreator<SetFormLoading> {
-		(formId :string, loading: boolean): SetFormLoading;
+		(formId: string, loading: boolean): SetFormLoading;
 	}
 
 	interface SetFormCompleteCreator extends ActionCreator<SetFormComplete> {
-		(formId :string, complete: boolean): SetFormComplete;
+		(formId: string, complete: boolean): SetFormComplete;
 	}
 
 
 	interface SetUserIdCreator extends ActionCreator<SetUserId> {
-		(userId :string): SetUserId;
+		(userId: string): SetUserId;
 	}
 }

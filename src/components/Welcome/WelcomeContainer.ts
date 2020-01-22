@@ -7,11 +7,11 @@ import StoreState from 'src/reducers/types/StoreState';
 import { WelcomeContainerProps } from './types/WelcomeContainerProps';
 import { WelcomeLayoutViewProps } from './Views/types/WelcomeLayoutViewProps';
 import { WelcomePasswordViewProps } from './Views/types/WelcomePasswordViewProps';
-import { WelcomeSecurityQuestionViewProps } from './Views/types/WelcomeSecurityQuestionViewProps';
+// import { WelcomeSecurityQuestionViewProps } from './Views/types/WelcomeSecurityQuestionViewProps';
 import { WelcomeCompleteView } from './Views/WelcomeCompleteView';
 import WelcomeLayoutView from './Views/WelcomeLayoutView';
 import { WelcomePasswordView } from './Views/WelcomePasswordView';
-import { WelcomeSecurityQuestionView } from './Views/WelcomeSecurityQuestionView';
+// import { WelcomeSecurityQuestionView } from './Views/WelcomeSecurityQuestionView';
 import { VerifyUserIdFailureView, VerifyUserIdLoadingView } from './Views/WelcomeVerifyUserIdViews';
 
 
@@ -25,7 +25,17 @@ export class WelcomeContainer extends React.Component<WelcomeContainerProps>
 		containsInteger: (minNumber: number) => (`Contain at least ${minNumber} digit (0-9)`),
 		containsNonAlphaNumeric: (minSymbol: number) => (`Contain at least ${minSymbol} special characters (punctuation).`)
 	};
-
+	public state = {
+		passwordVisibilityToggle: false,
+		newPasswordEmptyError: false,
+		confirmNewPasswordEmptyError: false,
+		securityquestionEmpty: false,
+		showWelcomeContent: false,
+		errorMessage: false
+	};
+	// private handleTemporaryPasswordSubmit = () => {
+	// 	console.log('ddddddddddddddddddd', this.props.onFormSubmit)
+	// }
 	public componentWillMount() {
 
 		if (this.props.match && this.props.match.params && this.props.match.params.userId) {
@@ -35,9 +45,8 @@ export class WelcomeContainer extends React.Component<WelcomeContainerProps>
 	}
 
 	public render() {
-
+		console.log('Wel11comeWelcome', this.props.Welcome)
 		this.buildPasswordComplexityMessages();
-
 		let welcomeView: (React.SFCElement<any> | null) = null;
 
 		if (this.props.Welcome.verifyUserId.loading === true) {
@@ -54,7 +63,30 @@ export class WelcomeContainer extends React.Component<WelcomeContainerProps>
 
 		return React.createElement(WelcomeLayoutView, welcomeLayoutProps);
 	}
+	private showWelcomeContent = () => {
+		if (!this.state.showWelcomeContent) {
+			this.setState({ showWelcomeContent: true })
+		} else if (this.state.showWelcomeContent) {
+			this.setState({ showWelcomeContent: false })
+		}
+	}
+	private handleCloseError = (e: any) => {
+		if (!this.state.errorMessage) {
+			this.setState({ errorMessage: true })
+		}
+	}
+	private handlePasswordVisibility = (e: any) => {
+		console.log('this.state.passwordVisibilityToggle', this.state.passwordVisibilityToggle)
+		if (!this.state.passwordVisibilityToggle) {
+			this.setState({ passwordVisibilityToggle: true })
+		} else if (this.state.passwordVisibilityToggle) {
+			this.setState({ passwordVisibilityToggle: false })
+		}
+	}
+	// private handleEmtyFieldError=()=>{
 
+	// 	if (this.props.Welcome.setPasswordForm.)
+	// }
 	private buildPasswordComplexityMessages = () => {
 
 		const complexityMessages: string[] = [];
@@ -115,20 +147,26 @@ export class WelcomeContainer extends React.Component<WelcomeContainerProps>
 				form: this.props.Welcome.setPasswordForm,
 				passwordComplexityMessages: this.buildPasswordComplexityMessages(),
 				onFormSubmit: this.props.onFormSubmit,
-				onFormChange: this.props.onFormChange
-			}
+				onFormChange: this.props.onFormChange,
+				showResetPasswordView: this.props.Welcome,
+				handlePasswordVisibility: this.handlePasswordVisibility,
+				onStateChange: this.state,
+				showWelcomeContent: this.showWelcomeContent,
+				handleCloseError: this.handleCloseError
+			} as any;
 
 			currentStep = React.createElement(WelcomePasswordView, passwordViewProps);
 
-		} else if (this.props.Welcome.setSecurityQuestion.complete === false) {
-
-			const setSecurityQuestionProps: WelcomeSecurityQuestionViewProps = {
-				form: this.props.Welcome.setSecurityQuestion,
-				onFormSubmit: this.props.onFormSubmit,
-				onFormChange: this.props.onFormChange
-			}
-			currentStep = React.createElement(WelcomeSecurityQuestionView, setSecurityQuestionProps);
 		}
+		// else if (this.props.Welcome.setSecurityQuestion.complete === false) {
+
+		// 	const setSecurityQuestionProps: WelcomeSecurityQuestionViewProps = {
+		// 		form: this.props.Welcome.setSecurityQuestion,
+		// 		onFormSubmit: this.props.onFormSubmit,
+		// 		onFormChange: this.props.onFormChange
+		// 	}
+		// 	currentStep = React.createElement(WelcomeSecurityQuestionView, setSecurityQuestionProps);
+		// }
 		else {
 			currentStep = React.createElement(WelcomeCompleteView, null);
 		}
@@ -149,39 +187,39 @@ export class WelcomeContainer extends React.Component<WelcomeContainerProps>
 				children
 			}
 		}
-		else if (this.props.Welcome.setPasswordForm.complete === false &&
-			this.props.Welcome.setSecurityQuestion.complete === false) {
-			return {
-				showMessage: true,
-				messageHeader: `Welcome ${this.props.Welcome.verifyUserId.accountLogin}!`,
-				messageContent: 'Please take a moment to finish setting up your account.',
-				messageIcon: 'handshake',
-				messagePositive: false,
-				children
-			}
-		}		
-		else if (this.props.Welcome.setPasswordForm.complete === true &&
-			this.props.Welcome.setSecurityQuestion.complete === false) {
-			return {
-				showMessage: true,
-				messageHeader: `Your password has been set.`,
-				messageContent: "Now, let's setup your password recovery question.",
-				messageIcon: 'thumbs up outline',
-				messagePositive: true,
-				children
-			}
-		}
-		else if (this.props.Welcome.setPasswordForm.complete === true &&
-			this.props.Welcome.setSecurityQuestion.complete === true) {
-			return {
-				showMessage: true,
-				messageHeader: "We're all done here!",
-				messageContent: " We'll log you in and redirect you in a moment.",
-				messageIcon: 'flag checkered',
-				messagePositive: true,
-				children
-			}
-		}
+		// else if (this.props.Welcome.setPasswordForm.complete === false &&
+		// 	this.props.Welcome.setSecurityQuestion.complete === false) {
+		// 	return {
+		// 		showMessage: true,
+		// 		messageHeader: `Welcome ${this.props.Welcome.verifyUserId.accountLogin}!`,
+		// 		messageContent: 'Please take a moment to finish setting up your account.',
+		// 		messageIcon: 'handshake',
+		// 		messagePositive: false,
+		// 		children
+		// 	}
+		// }
+		// else if (this.props.Welcome.setPasswordForm.complete === true &&
+		// 	this.props.Welcome.setSecurityQuestion.complete === false) {
+		// 	return {
+		// 		showMessage: true,
+		// 		messageHeader: `Your password has been set.`,
+		// 		messageContent: "Now, let's setup your password recovery question.",
+		// 		messageIcon: 'thumbs up outline',
+		// 		messagePositive: true,
+		// 		children
+		// 	}
+		// }
+		// else if (this.props.Welcome.setPasswordForm.complete === true &&
+		// 	this.props.Welcome.setSecurityQuestion.complete === true) {
+		// 	return {
+		// 		showMessage: true,
+		// 		messageHeader: "We're all done here!",
+		// 		messageContent: " We'll log you in and redirect you in a moment.",
+		// 		messageIcon: 'flag checkered',
+		// 		messagePositive: true,
+		// 		children
+		// 	}
+		// }
 
 		return {
 			showMessage: false,
@@ -210,4 +248,3 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(WelcomeContainer);
-

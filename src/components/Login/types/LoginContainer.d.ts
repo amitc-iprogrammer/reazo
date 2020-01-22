@@ -7,7 +7,4 @@ interface ILoginContainerProps {
 	onAuthenticationFormChange(targetField: string, fieldValue: string, fieldIsValid: boolean): void;
 	onForgotPasswordToggle(): void;
 	onForgotPassword(username: string): void;
-	onTemporaryPasswordSet(username: string, password: string): void;
-	emailTemporaryData:string;
-	state:void;
 }

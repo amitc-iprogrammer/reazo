@@ -105,8 +105,6 @@ export const TopMenuUser: React.StatelessComponent<TopMenuProps> =
 export const TopMenu: React.StatelessComponent<TopMenuProps> =
 	(props: TopMenuProps) =>
 		(
-			<>
-			</>
 			// <Menu
 			// 	inverted
 			// 	borderless
@@ -123,6 +121,8 @@ export const TopMenu: React.StatelessComponent<TopMenuProps> =
 			// 	</Menu.Header>
 			// 	<TopMenuUser {...props} />
 			// </Menu>
+			<>
+			</>
 		)
 /** 
  * @member {object} TopMenu.propTypes

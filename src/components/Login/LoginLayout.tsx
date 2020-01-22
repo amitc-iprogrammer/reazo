@@ -1,7 +1,7 @@
 // import * as moment from 'moment';
 import * as React from 'react';
-import { Grid } from 'semantic-ui-react';
-// ,Image ,Segment, Label,Icon
+import { Grid} from 'semantic-ui-react';
+
 const LoginLayout: React.StatelessComponent<LoginLayoutProps> =
 	(props: LoginLayoutProps) =>
 		(
@@ -12,9 +12,9 @@ const LoginLayout: React.StatelessComponent<LoginLayoutProps> =
 						size='medium'
 						centered
 						
-					/>
+					/> */}
 					{props.children}
-					<Segment basic textAlign='center'>
+					{/* <Segment basic textAlign='center'>
 						<Label basic>
 							<Icon name='copyright' fitted />
 							&nbsp;
@@ -22,9 +22,8 @@ const LoginLayout: React.StatelessComponent<LoginLayoutProps> =
 							&nbsp;
 							{moment().format('YYYY')}
 						</Label>
-					</Segment>
-				</Grid.Column> */}
-				{props.children}
+					</Segment> */}
+				{/* </Grid.Column> */}
 			</Grid>
 		)
 

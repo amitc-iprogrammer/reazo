@@ -1,5 +1,3 @@
-import * as  dotenv from  'dotenv';
-dotenv.config();
 // tslint:disable:no-console
 // In production, we register a service worker to serve assets from local cache.
 

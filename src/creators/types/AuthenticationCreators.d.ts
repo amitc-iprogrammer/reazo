@@ -52,12 +52,6 @@ declare namespace AuthenticationCreators
 
 	interface ForgotPasswordLoading extends Action {}
 
-	interface TemporaryPasswordSuccess extends Action {}
-
-	interface TemporaryPasswordFailure extends Action {}
-
-	interface TemporaryPasswordLoading extends Action {}
-
 	interface FormChange extends Action {
 		field: string;
 		value: string;
@@ -106,7 +100,5 @@ declare namespace AuthenticationCreators
 		( inactivityTimeoutInSeconds: number ): SetInactivityTimeoutWarning;
 	}
 	interface ClearInactivityTimeoutWarningCreator extends ActionCreator<ClearInactivityTimeoutWarning> {}
-	interface TemporaryPasswordSuccessCreator extends ActionCreator<ForgotPasswordSuccess> {}
-	interface TemporaryPasswordFailureCreator extends ActionCreator<ForgotPasswordFailure> {}
-	interface TemporaryPasswordLodingCreator extends ActionCreator<ForgotPasswordLoading> {}
+
 }

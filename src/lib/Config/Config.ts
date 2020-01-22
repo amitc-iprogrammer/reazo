@@ -1,8 +1,6 @@
 
 import { ApplicationConfig } from './types/ApplicationConfig';
-import * as  dotenv from  'dotenv';
-dotenv.config();
-console.log("Process Env : ",process.env); 
+
 const Config :ApplicationConfig = {
 	apiUrl: process.env.REACT_APP_REAZO_AGENT_REAZO_API_URL as string,
 	oktaIssuer: process.env.REACT_APP_REAZO_AGENT_OKTA_ISSUER as string,

@@ -8,6 +8,7 @@ export const WelcomeActionTypes =
 	VerifyUserIdSuccess: 'WELCOME_ACTIONS_VERIFY_TOKEN_SUCCESS',
 	VerifyUserIdFailure: 'WELCOME_ACTIONS_VERIFY_TOKEN_FAILURE',
 	FormChange: 'WELCOME_ACTIONS_FORM_CHANGE',
+	FormSubmit:'WELCOME_ACTIONS_FORM_SUBMIT',
 	SetPasswordValidators: 'WELCOME_ACTIONS_SET_PASSWORD_VALIDATORS',
 	SetConfirmPasswordValidatorCompareValue: 'WELCOME_ACTIONS_SET_CONFIRM_PASSWORD_VALIDATOR_COMPARE_VALUE',
 	SetFormError: 'WELCOME_ACTIONS_SET_FORM_ERROR',
@@ -22,10 +23,11 @@ export const VerifyUserIdLoading: WelcomeCreators.VerifyUserIdLoadingCreator =
 	);
 
 export const VerifyUserIdSuccess: WelcomeCreators.VerifyUserIdSuccessCreator =
-	(accountLogin: string, passwordComplexity: IOktaPasswordComplexity): WelcomeCreators.VerifyUserIdSuccess => {
+	(accountLogin: string, success: boolean, passwordComplexity: IOktaPasswordComplexity): WelcomeCreators.VerifyUserIdSuccess => {
 		return {
 			type: WelcomeActionTypes.VerifyUserIdSuccess,
 			accountLogin,
+			success,
 			passwordComplexity
 		};
 	}
@@ -45,7 +47,16 @@ export const FormChange: WelcomeCreators.FormChangeCreator =
 			error
 		}
 	)
-
+export const FormSubmit: WelcomeCreators.FormSubmitCreator =
+	(formId: string, fieldId: string, value: string, error: boolean): WelcomeCreators.FormSubmit => (
+		{
+			type: WelcomeActionTypes.FormSubmit,
+			formId,
+			fieldId,
+			value,
+			error
+		}
+	)
 export const SetPasswordValidators: WelcomeCreators.SetPasswordValidatorsCreator =
 	(validators: IValidator[]): WelcomeCreators.SetPasswordValidators => (
 		{
@@ -62,23 +73,24 @@ export const SetConfirmPasswordValidatorCompareValue: WelcomeCreators.SetConfirm
 	)
 
 export const SetFormError: WelcomeCreators.SetFormErrorCreator =
-	(formId :string, errorMessage: string): WelcomeCreators.SetFormError => (
+	(formId: string, errorMessage: string,emailValidationErrorMessage:string): WelcomeCreators.SetFormError => (
 		{
 			type: WelcomeActionTypes.SetFormError,
 			formId,
-			errorMessage
+			errorMessage,
+			emailValidationErrorMessage
 		}
 	)
 
 export const ClearFormError: WelcomeCreators.ClearFormErrorCreator =
-	(formId :string): WelcomeCreators.ClearFormError => (
+	(formId: string): WelcomeCreators.ClearFormError => (
 		{
 			type: WelcomeActionTypes.ClearFormError,
 			formId
 		}
 	)
 export const SetFormLoading: WelcomeCreators.SetFormLoadingCreator =
-	(formId :string, loading: boolean): WelcomeCreators.SetFormLoading => (
+	(formId: string, loading: boolean): WelcomeCreators.SetFormLoading => (
 		{
 			type: WelcomeActionTypes.SetFormLoading,
 			formId,
@@ -87,7 +99,7 @@ export const SetFormLoading: WelcomeCreators.SetFormLoadingCreator =
 	)
 
 export const SetFormComplete: WelcomeCreators.SetFormCompleteCreator =
-	(formId :string, complete: boolean): WelcomeCreators.SetFormComplete => (
+	(formId: string, complete: boolean): WelcomeCreators.SetFormComplete => (
 		{
 			type: WelcomeActionTypes.SetFormComplete,
 			formId,

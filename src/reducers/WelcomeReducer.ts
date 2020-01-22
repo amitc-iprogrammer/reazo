@@ -33,6 +33,14 @@ const initialState: WelcomeReducerState = {
 		error: false,
 		accountLogin: null,
 		userId: null,
+		showResetPasswordView: false,
+		emailClassAdd: false,
+		newPasswordClassAdd: false,
+		newPassWordEmptyFieldError: false,
+		setNewPasswordEmptyError: false,
+		confirmPasswordEmptyFieldError: false,
+		confirmNewPasswordClassAdd: false,
+		passwordClassAdd: false,
 		passwordComplexity: {
 			excludeUsername: true,
 			minLength: 8,
@@ -47,8 +55,24 @@ const initialState: WelcomeReducerState = {
 		complete: false,
 		error: false,
 		errorMessage: '',
+		emailValidationErrorMessage: '',
 		loading: false,
 		fields: {
+			securityQuestion: { id: 'securityQuestion', value: null, error: false, touched: false, options: securityQuestionOptions, validation: { required: true } },
+			securityAnswer: {
+				id: 'securityAnswer',
+				value: null,
+				error: false,
+				touched: false,
+				validation: {
+					required: true,
+					validators: {
+						type: ValidationTypes.MinimumLength as ValidatorType,
+						options: { length: 4 }
+					}
+				}
+			},
+			email: { id: 'email', value: null, error: false, touched: false, validation: { required: true } },
 			oldPassword: { id: 'oldPassword', value: null, error: false, touched: false, validation: { required: true } },
 			newPassword: { id: 'newPassword', value: null, error: false, touched: false, validation: { required: true } },
 			confirmNewPassword: {
@@ -70,36 +94,42 @@ const initialState: WelcomeReducerState = {
 			}
 		}
 	},
-	setSecurityQuestion: {
-		id: 'setSecurityQuestion',
-		complete: false,
-		error: false,
-		errorMessage: '',
-		loading: false,
-		fields: {
-			securityQuestion: { id: 'securityQuestion', value: null, error: false, touched: false, options: securityQuestionOptions, validation: { required: true } },
-			securityAnswer: {
-				id: 'securityAnswer',
-				value: null,
-				error: false,
-				touched: false,
-				validation: {
-					required: true,
-					validators: {
-						type: ValidationTypes.MinimumLength as ValidatorType,
-						options: { length: 4 }
-					}
-				}
-			}
-		}
-	}
+	// setSecurityQuestion: {
+	// 	id: 'setSecurityQuestion',
+	// 	complete: false,
+	// 	error: false,
+	// 	errorMessage: '',
+	// 	loading: false,
+	// 	fields: {
+	// 		securityQuestion: { id: 'securityQuestion', value: null, error: false, touched: false, options: securityQuestionOptions, validation: { required: true } },
+	// securityAnswer: {
+	// 	id: 'securityAnswer',
+	// 	value: null,
+	// 	error: false,
+	// 	touched: false,
+	// 	validation: {
+	// 		required: true,
+	// 		validators: {
+	// 			type: ValidationTypes.MinimumLength as ValidatorType,
+	// 			options: { length: 4 }
+	// 		}
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 const handleVerifyUserIdLoading =
 	(state: WelcomeReducerState, action: WelcomeCreators.VerifyUserIdLoading): WelcomeReducerState => {
 		return {
 			...state,
-			verifyUserId: { ...state.verifyUserId, loading: true, success: false, error: false, accountLogin: null }
+			verifyUserId: {
+				...state.verifyUserId, loading: true, showResetPasswordView: false, emailClassAdd: false, newPasswordClassAdd: false,
+				newPassWordEmptyFieldError: false, setNewPasswordEmptyError: false,
+				confirmPasswordEmptyFieldError: false,
+				confirmNewPasswordClassAdd: false,
+				passwordClassAdd: false, success: false, error: false, accountLogin: null,
+			}
 		};
 	}
 
@@ -113,7 +143,7 @@ const handleSetUserId =
 				userId: action.userId
 			}
 		}
-);
+	);
 
 const handleVerifyUserIdSuccess =
 	(state: WelcomeReducerState, action: WelcomeCreators.VerifyUserIdSuccess): WelcomeReducerState => {
@@ -123,6 +153,14 @@ const handleVerifyUserIdSuccess =
 				...state.verifyUserId,
 				loading: false,
 				success: true,
+				showResetPasswordView: false,
+				emailClassAdd: false,
+				newPassWordEmptyFieldError: false,
+				setNewPasswordEmptyError:false,
+				confirmPasswordEmptyFieldError: false,
+				newPasswordClassAdd: false,
+				confirmNewPasswordClassAdd: false,
+				passwordClassAdd: false,
 				error: false,
 				accountLogin: action.accountLogin,
 				passwordComplexity: action.passwordComplexity
@@ -154,6 +192,7 @@ const handleFormChange =
 					}
 				}
 			}
+
 		};
 	}
 
@@ -241,7 +280,7 @@ const handleSetFormLoading =
 		}
 	)
 
-	const handleSetFormComplete =
+const handleSetFormComplete =
 	(state: WelcomeReducerState, action: WelcomeCreators.SetFormComplete): WelcomeReducerState => (
 		{
 			...state,
@@ -251,7 +290,7 @@ const handleSetFormLoading =
 			}
 		}
 	)
-	
+
 
 
 

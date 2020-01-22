@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import AuthenticationService from '../Authentication/AuthenticationService';
 import { IOktaPasswordComplexity } from '../Authentication/types/OktaAuth';
